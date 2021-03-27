@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewMorningSession"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_10dp"
+            android:text="@string/label_morning_appointment_timing"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewFirstSession"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:translationZ="@dimen/dimen_2dp"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:cardElevation="@dimen/dimen_2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewMorningSession">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dimen_10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewMorningSessionTiming"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_time_9_00_am_to_12_30_pm"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupMorningSession"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@id/textViewMorningSessionTiming"
+                    app:layout_constraintStart_toStartOf="@id/textViewMorningSessionTiming"
+                    app:layout_constraintTop_toBottomOf="@id/textViewMorningSessionTiming">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_9_00_am_to_9_15_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_9_15_am_to_9_30_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_9_30_am_to_9_45_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_9_45_am_to_10_00_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_10_00_am_to_10_15_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_10_15_am_to_10_30_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_10_30_am_to_10_45_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_10_45_am_to_11_00_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_11_00_am_to_11_15_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_11_15_am_to_11_30_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_11_30_am_to_11_45_am" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_11_45_am_to_12_00_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_12_00_pm_to_12_15_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_12_15_pm_to_12_30_pm" />
+
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAfternoonSession"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/label_afternoon_appointment_timing"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="@id/textViewMorningSession"
+            app:layout_constraintStart_toStartOf="@id/textViewMorningSession"
+            app:layout_constraintTop_toBottomOf="@id/cardViewFirstSession" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewSecondSession"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"
+            android:translationZ="@dimen/dimen_2dp"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:cardElevation="@dimen/dimen_2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/cardViewFirstSession"
+            app:layout_constraintStart_toStartOf="@id/cardViewFirstSession"
+            app:layout_constraintTop_toBottomOf="@id/textViewAfternoonSession">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dimen_10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewAfternoonSessionTiming"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_4_00_pm_to_8_00_pm"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupAfternoonSession"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@id/textViewAfternoonSessionTiming"
+                    app:layout_constraintStart_toStartOf="@id/textViewAfternoonSessionTiming"
+                    app:layout_constraintTop_toBottomOf="@id/textViewAfternoonSessionTiming">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_4_00_pm_to_4_15_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_4_15_pm_to_4_30_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_4_30_pm_to_4_45_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_4_45_pm_to_5_00_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_5_00_pm_to_5_15_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_5_15_pm_to_5_30pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_5_30_pm_to_5_45_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_5_45_pm_to_6_00_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_6_00_pm_to_6_15_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_6_15_pm_to_6_30pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_6_30_pm_to_6_45_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_6_45_pm_to_7_00_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_7_00_pm_to_7_15_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_7_15_pm_to_7_30_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_7_30_pm_to_7_45_pm" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        style="@style/Theme.Custom.Appointment.RadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_7_45_pm_to_8_00_pm" />
+
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

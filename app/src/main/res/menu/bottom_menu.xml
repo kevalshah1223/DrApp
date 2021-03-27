@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/home"
+        android:title="@string/bottom_label_home" />
+
+    <item
+        android:id="@+id/menuAppointment"
+        android:icon="@drawable/appointment"
+        android:title="@string/bottom_label_appointment" />
+
+    <item
+        android:id="@+id/menuAboutUs"
+        android:icon="@drawable/information"
+        android:title="@string/bottom_label_about_us" />
+
+    <item
+        android:id="@+id/menuContact"
+        android:icon="@drawable/contact"
+        android:title="@string/bottom_label_contact_us" />
+</menu>

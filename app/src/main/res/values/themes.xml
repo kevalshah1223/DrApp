@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.DrApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/mainColor</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Custom.Appointment.EditText" parent="Widget.AppCompat.EditText">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="paddingStart">@dimen/dimen_10dp</item>
+        <item name="android:textColor">@color/mainColor</item>
+        <item name="android:paddingStart">@dimen/dimen_10dp</item>
+    </style>
+
+    <style name="Theme.Custom.Appointment.EditText.UserName" parent="Theme.Custom.Appointment.EditText">
+        <item name="android:hint">@string/hint_enter_full_name</item>
+    </style>
+
+    <style name="Theme.Custom.Appointment.EditText.Subject" parent="Theme.Custom.Appointment.EditText">
+        <item name="android:hint">@string/hint_enter_subject</item>
+    </style>
+
+    <style name="Theme.Custom.Appointment.EditText.Feedback" parent="Theme.Custom.Appointment.EditText">
+        <item name="android:hint">@string/hint_enter_feedback</item>
+    </style>
+
+    <style name="Theme.Custom.Appointment.EditText.Contact" parent="Theme.Custom.Appointment.EditText">
+        <item name="android:hint">@string/hint_enter_mobile_no</item>
+    </style>
+
+    <style name="Theme.Custom.Appointment.RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/mainColor</item>
+        <item name="android:buttonTint">@color/mainColor</item>
+    </style>
+</resources>
