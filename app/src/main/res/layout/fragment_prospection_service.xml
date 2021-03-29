@@ -80,22 +80,22 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_30dp"
+                android:text="@string/label_why_this_therapy"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 app:layout_constraintEnd_toEndOf="@id/textViewAboutProspectionServiceData"
                 app:layout_constraintStart_toStartOf="@id/textViewAboutProspectionServiceData"
-                app:layout_constraintTop_toBottomOf="@id/textViewAboutProspectionServiceData"
-                tools:text="@string/label_why_this_therapy" />
+                app:layout_constraintTop_toBottomOf="@id/textViewAboutProspectionServiceData" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewWhyTherapyText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10dp"
-                tools:text="@string/label_why_this_therapy"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintEnd_toEndOf="@id/textViewWhyTherapy"
                 app:layout_constraintStart_toStartOf="@id/textViewWhyTherapy"
-                app:layout_constraintTop_toBottomOf="@id/textViewWhyTherapy" />
+                app:layout_constraintTop_toBottomOf="@id/textViewWhyTherapy"
+                tools:text="@string/label_why_this_therapy" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
