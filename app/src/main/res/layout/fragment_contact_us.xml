@@ -79,7 +79,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_background" />
+                        tools:src="@drawable/ic_launcher_background" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -88,18 +88,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20dp"
-                android:text="@string/label_dr_name"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintEnd_toEndOf="@id/cardViewDrCard"
                 app:layout_constraintStart_toStartOf="@id/cardViewDrCard"
-                app:layout_constraintTop_toBottomOf="@id/cardViewDrCard" />
+                app:layout_constraintTop_toBottomOf="@id/cardViewDrCard"
+                tools:text="@string/label_dr_name" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewContactNumber"
                 android:layout_width="0dp"
-                android:layout_marginHorizontal="@dimen/dimen_5dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_5dp"
                 android:layout_marginTop="@dimen/dimen_30dp"
                 android:translationZ="@dimen/dimen_2dp"
                 app:cardCornerRadius="@dimen/dimen_5dp"
@@ -117,10 +117,11 @@
                     android:drawablePadding="@dimen/dimen_10dp"
                     android:drawableTint="@color/mainColor"
                     android:padding="@dimen/dimen_10dp"
-                    android:text="@string/label_dr_phone_91_7016244301"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/mainColor"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:targetApi="m"
+                    tools:text="@string/label_dr_phone_91_7016244301" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -145,10 +146,11 @@
                     android:drawablePadding="@dimen/dimen_10dp"
                     android:drawableTint="@color/mainColor"
                     android:padding="@dimen/dimen_10dp"
-                    android:text="@string/label_dr_email_bkalpesh7_gmail_com"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/mainColor"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:targetApi="m"
+                    tools:text="@string/label_dr_email_bkalpesh7_gmail_com" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -174,10 +176,11 @@
                     android:drawablePadding="@dimen/dimen_10dp"
                     android:drawableTint="@color/mainColor"
                     android:padding="@dimen/dimen_10dp"
-                    android:text="@string/label_address"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/mainColor"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:targetApi="m"
+                    tools:text="@string/label_address" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -10,13 +10,13 @@
     android:layout_marginEnd="@dimen/dimen_5dp"
     android:elevation="@dimen/dimen_3dp"
     android:translationZ="@dimen/dimen_3dp"
-    app:cardBackgroundColor="@color/mainLightColor"
-    app:cardCornerRadius="@dimen/dimen_5dp">
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    tools:targetApi="lollipop">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/dimen_5dp">
+        android:background="@android:color/transparent"
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewMagnetImage"
