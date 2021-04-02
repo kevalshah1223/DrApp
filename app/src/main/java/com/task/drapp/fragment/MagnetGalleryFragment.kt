@@ -3,24 +3,23 @@ package com.task.drapp.fragment
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.task.drapp.R
 import com.task.drapp.adapter.MagnetGalleryAdapter
 import com.task.drapp.viewmodel.MainActivityViewModel
 
 class MagnetGalleryFragment : Fragment() {
-    lateinit var recyclerViewMagnetGallery: RecyclerView
-    lateinit var magnetGalleryViewModel: MainActivityViewModel
-    lateinit var magnetGalleryAdapter: MagnetGalleryAdapter
+
+    private lateinit var recyclerViewMagnetGallery: RecyclerView
+    private lateinit var magnetGalleryViewModel: MainActivityViewModel
+    private lateinit var magnetGalleryAdapter: MagnetGalleryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
