@@ -1,4 +1,4 @@
-    package com.task.drapp.fragment
+package com.task.drapp.fragment
 
 import android.os.Bundle
 import android.text.SpannableString
