@@ -41,9 +41,7 @@ class MainActivity : BaseActivity() {
                     groupMain.visibility = View.GONE
                     groupInternet.visibility = View.VISIBLE
                 }
-
                 handler.postDelayed(this, 1000)
-
             }
         }, 1000)
 
