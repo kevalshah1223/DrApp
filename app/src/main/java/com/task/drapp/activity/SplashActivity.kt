@@ -1,11 +1,12 @@
 package com.task.drapp.activity
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.task.drapp.R
-import java.lang.Exception
+import com.task.drapp.authentication.AuthMainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,10 +16,17 @@ class SplashActivity : AppCompatActivity() {
 
         Thread {
             try {
+                val pref = getSharedPreferences("Login", Context.MODE_PRIVATE)
                 Thread.sleep(2000)
-                startActivity(
-                    Intent(this, MainActivity::class.java)
-                )
+                if (pref.getBoolean("isLogin", false)) {
+                    startActivity(
+                        Intent(this, MainActivity::class.java)
+                    )
+                } else {
+                    startActivity(
+                        Intent(this, AuthMainActivity::class.java)
+                    )
+                }
                 finish()
             } catch (e: Exception) {
                 e.printStackTrace()

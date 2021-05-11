@@ -1,6 +1,8 @@
 package com.task.drapp.fragment
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
@@ -18,7 +20,10 @@ import androidx.cardview.widget.CardView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
 import com.task.drapp.R
+import com.task.drapp.authentication.dataclass.RegisterUserDataClass
 import com.task.drapp.dataclass.UserDetailsDataClass
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AppointmentFragment : BaseFragment(), View.OnClickListener,
     RadioGroup.OnCheckedChangeListener {
@@ -28,11 +33,18 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
         private var lastId = 0
     }
 
+    private var userName: String = ""
+    private var userPhone: String = ""
+    private var userGender: String = ""
+
     private lateinit var radioGroupMorningSession: RadioGroup
     private lateinit var radioGroupAfternoonSession: RadioGroup
 
     private lateinit var cardViewSelectTime: CardView
     private lateinit var textViewSelectTimeText: AppCompatTextView
+
+    private lateinit var cardViewSelectDate: CardView
+    private lateinit var textViewSelectDateText: AppCompatTextView
 
     private lateinit var editTextUserName: AppCompatEditText
     private lateinit var editTextUserContact: AppCompatEditText
@@ -54,16 +66,15 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextUserName = view.findViewById(R.id.editTextUserName)
-        editTextUserContact = view.findViewById(R.id.editTextUserContact)
+        setUpUserDetails()
+
         buttonMakeAppointment = view.findViewById(R.id.buttonMakeAppointment)
 
         cardViewSelectTime = view.findViewById(R.id.cardViewSelectTime)
         textViewSelectTimeText = view.findViewById(R.id.textViewSelectTimeText)
 
-        radioGroupGender = view.findViewById(R.id.radioGroupGender)
-        radioButtonMale = view.findViewById(R.id.radioButtonMale)
-        radioButtonFemale = view.findViewById(R.id.radioButtonFemale)
+        cardViewSelectDate = view.findViewById(R.id.cardViewSelectDate)
+        textViewSelectDateText = view.findViewById(R.id.textViewSelectDateText)
 
         databaseReference = FirebaseDatabase.getInstance().reference.child(TABLE_NAME)
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -91,6 +102,66 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
             0
         )
         textViewMakeAppointment.text = spannableTextViewMakeAppointment
+
+        cardViewSelectDate.setOnClickListener {
+            showDatePicker()
+        }
+    }
+
+    private fun setUpUserDetails() {
+        databaseReference = FirebaseDatabase.getInstance().reference.child("register_user")
+        val pref = activity!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
+        val user_id = pref.getInt("userId", -1)
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach {
+                    val value = it.getValue(RegisterUserDataClass::class.java)
+                    if (value!!.id == user_id) {
+                        userPhone = value.number
+                        userName = value.name
+                        userGender = value.gender
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
+
+    private fun showDatePicker() {
+        val c = Calendar.getInstance()
+        val mYear = c.get(Calendar.YEAR)
+        val mMonth = c.get(Calendar.MONTH)
+        val mDay = c.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this.context!!,
+            R.style.DatePickerDialogTheme, { _, year, monthOfYear, dayOfMonth ->
+                textViewSelectDateText.text = getDate(
+                    (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year),
+                    "dd MMM, yyyy"
+                )
+            },
+            mYear,
+            mMonth,
+            mDay
+        )
+
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis()
+        datePickerDialog.show()
+    }
+
+    private fun getDate(inputDate: String, dateFormat: String): String {
+        return try {
+            val inputFormat = SimpleDateFormat("dd-mm-yyyy")
+            val outputFormat = SimpleDateFormat(dateFormat)
+            val date = inputFormat.parse(inputDate)
+            return outputFormat.format(date)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
@@ -155,24 +226,6 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
         when (v!!.id) {
             R.id.buttonMakeAppointment -> {
 
-                if (editTextUserName.text.isNullOrEmpty()) {
-                    Toast.makeText(
-                        activity!!,
-                        getString(R.string.error_enter_name),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return
-                }
-
-                if (editTextUserContact.text.isNullOrEmpty()) {
-                    Toast.makeText(
-                        activity!!,
-                        getString(R.string.error_enter_number),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return
-                }
-
                 if (textViewSelectTimeText.text == v.context.getString(R.string.label_select_time)) {
                     Toast.makeText(
                         activity!!,
@@ -182,16 +235,10 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
                     return
                 }
 
-                var selectedGender = ""
-                if (radioGroupGender.checkedRadioButtonId != -1) {
-                    selectedGender =
-                        if (radioButtonMale.isChecked) activity!!.getString(R.string.label_male) else activity!!.getString(
-                            R.string.label_female
-                        )
-                } else {
+                if (textViewSelectDateText.text == v.context.getString(R.string.hint_select_date)) {
                     Toast.makeText(
                         activity!!,
-                        getString(R.string.message_select_gender),
+                        getString(R.string.error_select_date),
                         Toast.LENGTH_SHORT
                     ).show()
                     return
@@ -200,17 +247,16 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
                 databaseReference.child((lastId + 1).toString()).setValue(
                     UserDetailsDataClass(
                         lastId + 1,
-                        editTextUserName.text.toString(),
-                        editTextUserContact.text.toString(),
+                        userName,
+                        userPhone,
                         textViewSelectTimeText.text.toString(),
-                        selectedGender
+                        textViewSelectDateText.text.toString(),
+                        userGender
                     )
                 )
 
-                editTextUserName.text!!.clear()
-                editTextUserContact.text!!.clear()
                 textViewSelectTimeText.text = v.context.getString(R.string.label_select_time)
-
+                textViewSelectDateText.text = v.context.getString(R.string.hint_select_date)
                 Snackbar.make(
                     view!!,
                     getString(R.string.message_success),

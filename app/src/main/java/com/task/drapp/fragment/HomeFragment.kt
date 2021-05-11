@@ -1,5 +1,7 @@
 package com.task.drapp.fragment
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.task.drapp.R
 import com.task.drapp.adapter.DashboardRecyclerViewAdapter
+import com.task.drapp.authentication.AuthMainActivity
 import com.task.drapp.dataclass.DashboardInfo
 import com.task.drapp.viewmodel.MainActivityViewModel
 
@@ -25,6 +28,7 @@ class HomeFragment : BaseFragment() {
     lateinit var textViewClincName: AppCompatTextView
     lateinit var progressMagnetImage: ProgressBar
     lateinit var progressDrImage: ProgressBar
+    lateinit var imageViewLogout: AppCompatImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +75,8 @@ class HomeFragment : BaseFragment() {
 
         doctorViewModel.getClinicName.observe(this, {
             textViewClincName.text = it
-            textViewWelcome.text = view.context.getString(R.string.label_welcome_om_magnet_therapy_clinic,it)
+            textViewWelcome.text =
+                view.context.getString(R.string.label_welcome_om_magnet_therapy_clinic, it)
         })
 
         doctorViewModel.getDrImage.observe(this, {
@@ -85,9 +90,19 @@ class HomeFragment : BaseFragment() {
             Glide.with(view.context).load(it).into(imageViewMagnet)
             imageViewMagnet.visibility = View.VISIBLE
         })
+
+        imageViewLogout.setOnClickListener {
+            val pref = activity!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
+            val edit = pref.edit()
+            edit.clear()
+            edit.apply()
+            startActivity(Intent(activity!!, AuthMainActivity::class.java))
+            activity!!.finish()
+        }
     }
 
     private fun init() {
+        imageViewLogout = view!!.findViewById(R.id.imageViewLogout)
         textViewClincName = view!!.findViewById(R.id.textViewClincName)
         textViewWelcome = view!!.findViewById(R.id.textViewWelcome)
         imageViewDrImage = view!!.findViewById(R.id.imageViewDrImage)

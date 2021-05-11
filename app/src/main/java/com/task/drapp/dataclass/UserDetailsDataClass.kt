@@ -5,6 +5,7 @@ data class UserDetailsDataClass(
     val userName: String,
     val userContact: String,
     val appointmentTime: String,
+    val appointmentDate: String,
     val gender: String,
     val isApproved: String = "pending"
 )

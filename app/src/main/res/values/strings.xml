@@ -72,6 +72,7 @@
     <string name="error_enter_name">Please Enter Your Name</string>
     <string name="error_enter_number">Please Enter Your Contact Number</string>
     <string name="error_select_appointment">Please Select Your Appointment Time</string>
+    <string name="error_select_date">Please Select Your Appointment Date</string>
     <string name="message_success">Your Appointment is Booked! Successfully</string>
     <string name="label_about_prospection_service">About Prospection Service</string>
     <string name="label_about_magnet">About Magnet Therapy</string>
@@ -84,4 +85,15 @@
     <string name="label_female">Female</string>
     <string name="message_select_gender">Select Gender</string>
     <string name="label_no_internet_connection_ntry_again">No Internet Connection!\nTry Again</string>
+    <string name="label_other">Other</string>
+    <string name="hint_select_date">Select Date:</string>
+    <string name="label_login_here">Login Here</string>
+    <string name="hint_enter_username">Enter Username</string>
+    <string name="hint_enter_password">Enter Password</string>
+    <string name="label_let_s_go">Let\'s Go</string>
+    <string name="label_don_t_have_account_sign_up">Don\'t have account? Sign Up</string>
+    <string name="hint_register">Register</string>
+    <string name="label_already_have_account_sign_in">Already have account? Sign In</string>
+    <string name="hint_email_address">Email Address</string>
+    <string name="label_register_here">Register Here</string>
 </resources>

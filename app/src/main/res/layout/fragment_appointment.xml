@@ -49,7 +49,7 @@
                 app:layout_constraintGuide_percent="0.97" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewUserName"
+                android:id="@+id/cardViewSelectTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10dp"
@@ -59,51 +59,6 @@
                 app:layout_constraintEnd_toEndOf="@id/guideLineEnd"
                 app:layout_constraintStart_toStartOf="@id/guideLineStart"
                 app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/editTextUserName"
-                    style="@style/Theme.Custom.Appointment.EditText.UserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName|textCapWords"
-                    android:maxLength="40"
-                    tools:ignore="RtlSymmetry" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewUserContact"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10dp"
-                android:translationZ="@dimen/dimen_2dp"
-                app:cardCornerRadius="@dimen/dimen_10dp"
-                app:cardElevation="@dimen/dimen_2dp"
-                app:layout_constraintEnd_toEndOf="@id/cardViewUserName"
-                app:layout_constraintStart_toStartOf="@id/cardViewUserName"
-                app:layout_constraintTop_toBottomOf="@id/cardViewUserName">
-
-                <EditText
-                    android:id="@+id/editTextUserContact"
-                    style="@style/Theme.Custom.Appointment.EditText.Contact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    tools:ignore="RtlSymmetry" />
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewSelectTime"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10dp"
-                android:translationZ="@dimen/dimen_2dp"
-                app:cardCornerRadius="@dimen/dimen_10dp"
-                app:cardElevation="@dimen/dimen_2dp"
-                app:layout_constraintEnd_toEndOf="@id/cardViewUserContact"
-                app:layout_constraintStart_toStartOf="@id/cardViewUserContact"
-                app:layout_constraintTop_toBottomOf="@id/cardViewUserContact">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewSelectTimeText"
@@ -116,7 +71,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewGender"
+                android:id="@+id/cardViewSelectDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10dp"
@@ -127,57 +82,15 @@
                 app:layout_constraintStart_toStartOf="@id/cardViewSelectTime"
                 app:layout_constraintTop_toBottomOf="@id/cardViewSelectTime">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewSelectDateText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewGenderText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/dimen_10dp"
-                        android:paddingVertical="@dimen/dimen_10dp"
-                        android:text="@string/label_gender"
-                        android:textSize="@dimen/dimen_16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupGender"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="1"
-                        app:layout_constraintBottom_toBottomOf="@id/textViewGenderText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/textViewGenderText"
-                        app:layout_constraintTop_toTopOf="@id/textViewGenderText">
-
-                        <androidx.appcompat.widget.AppCompatRadioButton
-                            android:id="@+id/radioButtonMale"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/dimen_5dp"
-                            android:layout_weight="0.5"
-                            android:buttonTint="@color/mainColor"
-                            android:text="@string/label_male" />
-
-                        <androidx.appcompat.widget.AppCompatRadioButton
-                            android:id="@+id/radioButtonFemale"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dimen_5dp"
-                            android:layout_weight="0.5"
-                            android:buttonTint="@color/mainColor"
-                            android:text="@string/label_female" />
-                    </RadioGroup>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_10dp"
+                    android:paddingVertical="@dimen/dimen_10dp"
+                    android:text="@string/hint_select_date"
+                    android:textSize="@dimen/dimen_16sp" />
             </androidx.cardview.widget.CardView>
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonMakeAppointment"
                 android:layout_width="0dp"
@@ -194,7 +107,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardViewGender" />
+                app:layout_constraintTop_toBottomOf="@id/cardViewSelectDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
