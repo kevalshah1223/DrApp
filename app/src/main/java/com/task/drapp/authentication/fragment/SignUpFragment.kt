@@ -123,14 +123,7 @@ class SignUpFragment : Fragment() {
                 )
             ).addOnCompleteListener {
                 Toast.makeText(activity!!, "Successfully registered", Toast.LENGTH_SHORT).show()
-                val pref =
-                    activity!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
-                val edit = pref.edit()
-                edit.putBoolean("isLogin", true)
-                edit.putInt("userId", lastId + 1)
-                edit.apply()
-                startActivity(Intent(activity!!, MainActivity::class.java))
-                activity!!.finish()
+                activity!!.onBackPressed()
             }
         }
     }

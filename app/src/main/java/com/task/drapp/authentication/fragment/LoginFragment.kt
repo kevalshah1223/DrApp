@@ -71,20 +71,20 @@ class LoginFragment : BaseFragment() {
 
             databaseReference = FirebaseDatabase.getInstance().reference.child("register_user")
             var flag = false
-            var userId: Int
+            var userId: Int = 0
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     snapshot.children.forEach {
                         val value = it.getValue(RegisterUserDataClass::class.java)
                         if (value!!.email == editTextPhoneNumber.text.toString() && value.password == editTextPassword.text.toString()) {
-                            flag = false
                             userId = value.id
                             val pref =
                                 activity!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
                             val edit = pref.edit()
                             edit.putBoolean("isLogin", true)
-                            edit.putInt("userId", userId)
+                            edit.putInt("userId", value.id)
                             edit.apply()
+                            flag = false
                             startActivity(Intent(activity!!, MainActivity::class.java))
                             activity!!.finish()
                             return@forEach
@@ -92,10 +92,8 @@ class LoginFragment : BaseFragment() {
                             flag = true
                         }
                     }
-                    if (flag) {
-                        Toast.makeText(activity!!, "error", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(activity!!, "done", Toast.LENGTH_SHORT).show()
+                    if (flag && userId == 0) {
+                        Toast.makeText(activity!!, "Invalid Username / Password", Toast.LENGTH_SHORT).show()
                     }
                 }
 

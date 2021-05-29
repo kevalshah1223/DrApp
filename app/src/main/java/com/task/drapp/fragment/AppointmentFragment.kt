@@ -36,6 +36,7 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
     private var userName: String = ""
     private var userPhone: String = ""
     private var userGender: String = ""
+    private var userId: String = ""
 
     private lateinit var radioGroupMorningSession: RadioGroup
     private lateinit var radioGroupAfternoonSession: RadioGroup
@@ -60,14 +61,12 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setUpUserDetails()
         return inflater.inflate(R.layout.fragment_appointment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setUpUserDetails()
-
         buttonMakeAppointment = view.findViewById(R.id.buttonMakeAppointment)
 
         cardViewSelectTime = view.findViewById(R.id.cardViewSelectTime)
@@ -120,6 +119,7 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
                         userPhone = value.number
                         userName = value.name
                         userGender = value.gender
+                        userId = value.id.toString()
                     }
                 }
             }
@@ -243,10 +243,9 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
                     ).show()
                     return
                 }
-
-                databaseReference.child((lastId + 1).toString()).setValue(
+                databaseReference.child((lastId).toString()).setValue(
                     UserDetailsDataClass(
-                        lastId + 1,
+                        lastId,
                         userName,
                         userPhone,
                         textViewSelectTimeText.text.toString(),
@@ -254,7 +253,7 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
                         userGender
                     )
                 )
-
+                //Toast.makeText(requireContext(), "$userName", Toast.LENGTH_SHORT).show()
                 textViewSelectTimeText.text = v.context.getString(R.string.label_select_time)
                 textViewSelectDateText.text = v.context.getString(R.string.hint_select_date)
                 Snackbar.make(
