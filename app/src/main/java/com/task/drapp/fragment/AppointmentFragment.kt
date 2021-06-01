@@ -31,6 +31,7 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
     companion object {
         private const val TABLE_NAME = "appointmentDetails"
         private var lastId = 0
+        const val dd_mm_yyyy = "dd-MM-yyyy"
     }
 
     private var userName: String = ""
@@ -138,7 +139,7 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
         val datePickerDialog = DatePickerDialog(
             this.context!!,
             R.style.DatePickerDialogTheme, { _, year, monthOfYear, dayOfMonth ->
-                textViewSelectDateText.text = getDate(
+                textViewSelectDateText.text = getFormatDate(
                     (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year),
                     "dd MMM, yyyy"
                 )
@@ -152,10 +153,10 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
         datePickerDialog.show()
     }
 
-    private fun getDate(inputDate: String, dateFormat: String): String {
+    private fun getFormatDate(inputDate: String, outPutDate: String): String {
         return try {
-            val inputFormat = SimpleDateFormat("dd-mm-yyyy")
-            val outputFormat = SimpleDateFormat(dateFormat)
+            val inputFormat = SimpleDateFormat(dd_mm_yyyy)
+            val outputFormat = SimpleDateFormat(outPutDate)
             val date = inputFormat.parse(inputDate)
             return outputFormat.format(date)
         } catch (e: Exception) {
@@ -242,25 +243,30 @@ class AppointmentFragment : BaseFragment(), View.OnClickListener,
                         Toast.LENGTH_SHORT
                     ).show()
                     return
-                }
+                }/*
+                Toast.makeText(
+                    requireContext(),
+                    "${textViewSelectDateText.text}",
+                    Toast.LENGTH_SHORT
+                ).show()*/
                 databaseReference.child((lastId).toString()).setValue(
-                    UserDetailsDataClass(
-                        lastId,
-                        userName,
-                        userPhone,
-                        textViewSelectTimeText.text.toString(),
-                        textViewSelectDateText.text.toString(),
-                        userGender
+                        UserDetailsDataClass(
+                            lastId,
+                            userName,
+                            userPhone,
+                            textViewSelectTimeText.text.toString(),
+                            textViewSelectDateText.text.toString(),
+                            userGender
+                        )
                     )
-                )
-                //Toast.makeText(requireContext(), "$userName", Toast.LENGTH_SHORT).show()
-                textViewSelectTimeText.text = v.context.getString(R.string.label_select_time)
-                textViewSelectDateText.text = v.context.getString(R.string.hint_select_date)
-                Snackbar.make(
-                    view!!,
-                    getString(R.string.message_success),
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                    //Toast.makeText(requireContext(), "$userName", Toast.LENGTH_SHORT).show()
+                    textViewSelectTimeText.text = v.context.getString(R.string.label_select_time)
+                    textViewSelectDateText.text = v.context.getString(R.string.hint_select_date)
+                    Snackbar.make(
+                        view!!,
+                        getString(R.string.message_success),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
             }
         }
     }
